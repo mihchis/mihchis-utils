@@ -1,0 +1,35 @@
+/* App.css - CSS cho component App chính */
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 60px; /* Thêm padding-top bằng với chiều cao của header */
+}
+
+.container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  padding-top: 10px; /* Thêm padding-top để tạo khoảng cách với header */
+  width: 100%;
+  transition: margin-left 0.3s ease, max-width 0.3s ease, padding 0.3s ease;
+}
+
+/* Khi nav-menu active, giảm max-width và tạo margin-left */
+.nav-menu.active ~ .container {
+  margin-left: 250px;
+  max-width: calc(100% - 250px);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 992px) {
+  .nav-menu.active ~ .container {
+    margin-left: 0;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+} 

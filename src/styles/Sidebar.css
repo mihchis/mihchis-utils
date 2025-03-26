@@ -1,0 +1,91 @@
+/* Sidebar.css - CSS cho component Sidebar */
+.nav-menu {
+  position: fixed;
+  top: 60px;
+  left: -250px;
+  width: 250px;
+  height: calc(100vh - 60px);
+  background-color: var(--section-bg);
+  transition: left 0.3s ease;
+  z-index: 990;
+  overflow-y: auto;
+  box-shadow: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  /* Using webkit scrollbar properties for better cross-browser support */
+  scrollbar-width: thin;
+  scrollbar-color: var(--button-bg) var(--section-bg); /* Firefox */
+}
+
+.nav-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+  background: var(--section-bg);
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+  background-color: var(--button-bg);
+  border-radius: 4px;
+  border: 2px solid var(--section-bg);
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+  background-color: var(--button-hover);
+}
+
+.nav-menu.active {
+  left: 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu .nav-group {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu .nav-group span {
+  display: block;
+  font-weight: bold;
+  color: var(--desc-color);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.nav-menu .nav-group ul {
+  padding-left: 15px;
+}
+
+.nav-menu .nav-group ul li {
+  padding: 8px 0;
+}
+
+.nav-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s, padding-left 0.3s;
+  display: block;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+  color: var(--desc-color);
+  padding-left: 5px;
+}
+
+@media (max-width: 992px) {
+  .nav-menu {
+    width: 100%;
+    left: -100%;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+} 

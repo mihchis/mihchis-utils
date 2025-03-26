@@ -1,0 +1,116 @@
+.markdown-guide {
+  background-color: var(--section-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-guide-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: bold;
+}
+
+.markdown-guide-description {
+  color: var(--desc-color);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.syntax-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .syntax-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.syntax-section {
+  margin-bottom: 1.5rem;
+}
+
+.syntax-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.syntax-item {
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.syntax-item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.syntax-code {
+  flex: 1;
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-right: 1rem;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.syntax-description {
+  flex: 1;
+  color: var(--desc-color);
+  display: flex;
+  align-items: center;
+}
+
+.syntax-result {
+  font-style: italic;
+}
+
+/* Styled text examples */
+.syntax-result .bold {
+  font-weight: bold;
+}
+
+.syntax-result .italic {
+  font-style: italic;
+}
+
+.syntax-result .strike {
+  text-decoration: line-through;
+}
+
+.syntax-result a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.syntax-result blockquote {
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  padding-left: 0.75rem;
+  margin: 0;
+  color: var(--desc-color);
+}
+
+.syntax-result code {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+} 

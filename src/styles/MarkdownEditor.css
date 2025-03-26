@@ -1,0 +1,464 @@
+.markdown-editor-container {
+  width: 100%;
+  margin-top: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.markdown-editor-container h1 {
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.markdown-editor-container .description {
+  text-align: center;
+  color: var(--desc-color);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Editor styles based on the image */
+.editor-container {
+  background-color: var(--section-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.editor-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-title {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.editor-subtitle {
+  color: var(--desc-color);
+  margin: 0.3rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.editor-btn {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: var(--text-color);
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.editor-btn:hover {
+  background-color: rgba(50, 50, 50, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.editor-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* SVG icons nhỏ hơn */
+.editor-btn svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* Light theme adjustments */
+.light-theme .editor-btn {
+  background-color: rgba(220, 220, 220, 0.8);
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .editor-btn:hover {
+  background-color: rgba(200, 200, 200, 0.9);
+}
+
+.editor-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 500px;
+}
+
+@media (max-width: 992px) {
+  .editor-content {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .preview-pane {
+    min-height: 400px;
+  }
+}
+
+.editor-pane {
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.editor-textarea {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  border: none;
+  resize: none;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  outline: none;
+  overflow-y: scroll;
+}
+
+.preview-pane {
+  padding: 1rem;
+  overflow-y: scroll;
+  color: var(--text-color);
+  background-color: rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+/* Preview content styles */
+.preview-pane h1 {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-align: left;
+}
+
+.preview-pane h2 {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.preview-pane h3 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.preview-pane ul, 
+.preview-pane ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+.preview-pane li {
+  margin-bottom: 0.3rem;
+}
+
+.preview-pane li li {
+  margin-top: 0.3rem;
+}
+
+.preview-pane blockquote {
+  border-left: 4px solid rgba(255, 255, 255, 0.2);
+  margin-left: 0;
+  padding-left: 1rem;
+  color: var(--desc-color);
+}
+
+.preview-pane pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.preview-pane code {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.preview-pane pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.preview-pane a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.preview-pane a:hover {
+  text-decoration: underline;
+}
+
+.preview-pane table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.preview-pane th, 
+.preview-pane td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+}
+
+.preview-pane th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.preview-pane input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Footer actions */
+.editor-footer {
+  padding: 0.7rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.footer-btn {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: var(--text-color);
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.footer-btn:hover {
+  background-color: rgba(50, 50, 50, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.footer-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* SVG icons nhỏ hơn */
+.footer-btn svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* Light theme adjustments */
+.light-theme .footer-btn {
+  background-color: rgba(220, 220, 220, 0.8);
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .footer-btn:hover {
+  background-color: rgba(200, 200, 200, 0.9);
+}
+
+/* Mode selector styling - to remove */
+.mode-selector {
+  display: none;
+}
+
+/* Old editor layout and sections - to remove */
+.editor-layout {
+  display: none;
+}
+
+.editor-section, .preview-section {
+  display: none;
+}
+
+/* Markdown preview styling */
+.markdown-preview h1, 
+.markdown-preview h2, 
+.markdown-preview h3, 
+.markdown-preview h4, 
+.markdown-preview h5, 
+.markdown-preview h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.markdown-preview h1 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.3rem;
+}
+
+.markdown-preview p {
+  margin: 1rem 0;
+}
+
+.markdown-preview a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.markdown-preview a:hover {
+  text-decoration: underline;
+}
+
+.markdown-preview blockquote {
+  border-left: 4px solid rgba(255, 255, 255, 0.2);
+  margin-left: 0;
+  padding-left: 1rem;
+  color: var(--desc-color);
+}
+
+.markdown-preview pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-preview code {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.markdown-preview pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.markdown-preview ul, 
+.markdown-preview ol {
+  padding-left: 2rem;
+}
+
+.markdown-preview table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.markdown-preview th, 
+.markdown-preview td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+}
+
+.markdown-preview th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.markdown-preview hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}
+
+.markdown-preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Markdown cheat sheet */
+.markdown-help {
+  background-color: var(--section-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-help h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .help-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.help-item {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.help-item .syntax {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.4rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.help-item .description {
+  color: var(--desc-color);
+  font-size: 0.9rem;
+  text-align: left;
+  margin: 0;
+} 

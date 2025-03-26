@@ -1,0 +1,180 @@
+.code-minifier-container {
+  width: 100%;
+  margin-top: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.code-minifier-container h1 {
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.code-minifier-container .description {
+  text-align: center;
+  color: var(--desc-color);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Format toggle tabs */
+.format-tabs {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  background: var(--section-bg);
+  border-radius: 8px;
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.format-tab {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.format-tab.active {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.format-tab:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Code panels layout */
+.code-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .code-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code-panel {
+  background-color: var(--section-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.code-panel h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.code-panel p {
+  color: var(--desc-color);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.code-panel textarea {
+  width: 100%;
+  height: 300px;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.code-panel textarea:focus {
+  outline: none;
+  border-color: rgba(80, 80, 80, 0.8);
+}
+
+/* Action buttons */
+.minify-button {
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.minify-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.minify-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.copy-button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.copy-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+/* Light theme adjustments */
+.light-theme .code-panel textarea {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .format-tab.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .format-tab:hover:not(.active) {
+  background: rgba(0, 0, 0, 0.05);
+} 
