@@ -1,0 +1,464 @@
+.unit-converter-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg-dark);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  --primary-color-rgb: 0, 123, 255;
+}
+
+.unit-converter-container h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 700;
+}
+
+.unit-converter-container .description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tabs chuyển đổi danh mục đơn vị */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.category-tab {
+  padding: 12px 22px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.category-tab:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-tab.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+/* Form chuyển đổi */
+.conversion-form {
+  background-color: var(--bg-secondary);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.conversion-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Tiêu đề chuyển đổi */
+.conversion-header {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.conversion-header h2 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.conversion-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Nhóm form */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Container cho nhập đầu vào */
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 15px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.input-container input:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút đổi chỗ đơn vị */
+.swap-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+  flex-shrink: 0;
+}
+
+.swap-button:hover {
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.5);
+}
+
+.swap-button svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.5px;
+  transition: all 0.3s ease;
+}
+
+/* Hàng chọn đơn vị */
+.unit-selection-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Input với label */
+.input-with-label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Container cho dropdown đơn vị */
+.unit-dropdown-container {
+  position: relative;
+  min-width: 200px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.unit-dropdown-container.focused {
+  transform: translateY(-2px);
+}
+
+.unit-dropdown-container.focused .unit-select {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.unit-dropdown-container label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+/* Thiết lập các kiểu cho unit select */
+.unit-select {
+  width: 100%;
+  padding: 0 40px 0 15px;
+  background-color: #333333 !important;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: white !important;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.3s ease;
+  height: 50px;
+  overflow: hidden;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  
+  /* Thay đổi arrow chỉ xuống */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 15px) center;
+}
+
+.unit-select:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.unit-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.unit-select:focus-visible {
+  outline: none;
+}
+
+.unit-select option {
+  background-color: #333333;
+  color: white;
+  padding: 15px;
+  font-size: 1.05rem;
+  min-height: 40px;
+}
+
+/* Tăng cường hiển thị phần tử được chọn trong dropdown */
+.unit-select option:checked {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  color: white;
+  font-weight: bold;
+}
+
+/* Điều chỉnh kiểu dropdown trên Firefox */
+@-moz-document url-prefix() {
+  .unit-select {
+    background-color: #333333;
+    color: white;
+  }
+  
+  .unit-select option {
+    background-color: #333333;
+    color: white;
+  }
+}
+
+/* Điều chỉnh kiểu dropdown trên Safari */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .unit-select {
+      -webkit-appearance: none;
+      background-color: #333333;
+      color: white;
+    }
+  }
+}
+
+/* Khắc phục vấn đề dropdown trên thiết bị di động */
+@media (max-width: 768px) {
+  .unit-dropdown-container {
+    min-width: 100%;
+  }
+  
+  .unit-select {
+    font-size: 1rem;
+    padding: 0 30px 0 10px;
+    height: 45px;
+  }
+  
+  .unit-select option {
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
+
+/* Nút chuyển đổi */
+.convert-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.convert-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.convert-button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* Container kết quả */
+.result-container {
+  margin-top: 30px;
+  padding: 25px;
+  background: linear-gradient(to right, rgba(20, 20, 20, 0.8), rgba(30, 30, 30, 0.8));
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.result-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-color: rgba(var(--primary-color-rgb), 0.3);
+  transform: translateY(-3px);
+}
+
+/* Hộp kết quả */
+.result-box {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.result-box.calculating {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 5px rgba(var(--primary-color-rgb), 0.3); }
+  to { box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.5); }
+}
+
+/* Giá trị kết quả */
+.result-value {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 700;
+  margin-bottom: 15px;
+  animation: fadeIn 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.result-number {
+  color: var(--primary-color);
+}
+
+.result-unit {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.calculating-text {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  animation: pulseText 1s infinite alternate;
+}
+
+@keyframes pulseText {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Công thức chuyển đổi */
+.conversion-formula {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .unit-selection-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .input-container {
+    flex-direction: column;
+  }
+  
+  .swap-button {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .swap-button:hover {
+    transform: rotate(270deg) scale(1.1);
+  }
+}
+
+@media (max-width: 576px) {
+  .unit-converter-container h1 {
+    font-size: 2.2rem;
+  }
+  
+  .category-tab {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .conversion-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .result-value {
+    font-size: 1.6rem;
+  }
+} 

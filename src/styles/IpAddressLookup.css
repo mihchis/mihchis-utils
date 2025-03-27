@@ -1,0 +1,339 @@
+.ip-lookup {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  color: var(--text-color);
+}
+
+.ip-lookup h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.ip-lookup .description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.lookup-container {
+  background-color: var(--bg-secondary);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+/* Phần hiển thị IP hiện tại */
+.your-ip-display {
+  background-color: var(--bg-dark);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.your-ip-display span {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Phần hiển thị IP đã tra cứu */
+.checked-ip-display {
+  background: linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.1), rgba(var(--primary-color-rgb), 0.05));
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.3);
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.checked-ip-display span {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Hộp hiển thị IP */
+.ip-display-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-dark);
+  border-radius: 8px;
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  min-width: 180px;
+}
+
+.ip-text {
+  flex: 1;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Nút copy */
+.copy-ip-button, .copy-result-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.copy-ip-button:hover, .copy-result-button:hover {
+  color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.copy-result-button {
+  padding: 3px 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Thông báo đã sao chép */
+.copied-message {
+  position: absolute;
+  bottom: -25px;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.input-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.ip-input {
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid var(--border-color);
+  border-right: none;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.ip-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.lookup-button {
+  padding: 15px 25px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.lookup-button:hover {
+  box-shadow: 0 7px 14px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.lookup-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.my-ip-button {
+  padding: 12px 20px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.my-ip-button:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  border-color: var(--primary-color);
+}
+
+.my-ip-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  color: var(--text-secondary);
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.result-section {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.result-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  font-size: 1.3rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+
+.result-card {
+  background-color: var(--bg-dark);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.ip-info-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ip-info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.info-value {
+  color: var(--text-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.country-flag {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.map-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.map-link a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.map-link a:hover {
+  background-color: var(--primary-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(var(--primary-color-rgb), 0.3);
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .ip-input {
+    border-radius: 8px;
+    border-right: 1px solid var(--border-color);
+    margin-bottom: 10px;
+  }
+  
+  .lookup-button {
+    border-radius: 8px;
+  }
+  
+  .ip-info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .info-value {
+    margin-left: 10px;
+  }
+  
+  .your-ip-display, .checked-ip-display {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .ip-display-box {
+    width: 100%;
+  }
+} 
